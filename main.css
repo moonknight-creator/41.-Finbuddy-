@@ -1,0 +1,809 @@
+/* Main Styles for FinBuddy */
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+}
+
+a {
+    text-decoration: none;
+    color: #2c3e50;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #3498db;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #3498db;
+    border: 1px solid #3498db;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-secondary:active {
+    transform: translateY(0);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #3498db;
+    border-radius: 2px;
+}
+
+/* Header & Navigation */
+header {
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo i {
+    color: #3498db;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a.active {
+    color: #3498db;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: #3498db;
+    border-radius: 2px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-profile img {
+    border-radius: 50%;
+    border: 2px solid #3498db;
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+}
+
+.hero-content h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    color: #7f8c8d;
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.hero-image img {
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard Section */
+.dashboard {
+    padding: 60px 0;
+    background-color: #f1f5f9;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 40px auto 0;
+}
+
+.dashboard-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+}
+
+/* Financial Summary Card */
+.balance-info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.balance-info p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.balance-info h4 {
+    font-size: 2rem;
+    color: #2c3e50;
+}
+
+.quick-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 5px;
+}
+
+.positive {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.negative {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+/* Budget Card */
+.budget-progress {
+    margin-bottom: 20px;
+}
+
+.category {
+    margin-bottom: 15px;
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background-color: #3498db;
+    border-radius: 5px;
+}
+
+/* Savings Goals Card */
+.savings-goals {
+    margin-bottom: 20px;
+}
+
+.goal {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.goal-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #e1f0fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.goal-details {
+    flex: 1;
+}
+
+.goal-details h4 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.goal-progress {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.goal-progress span {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* Learning Card */
+.learning-progress {
+    margin-bottom: 20px;
+}
+
+.course-progress {
+    margin-bottom: 20px;
+}
+
+.course-progress h4 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.progress-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.progress-info span {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+    text-align: right;
+}
+
+.badges {
+    display: flex;
+    gap: 15px;
+}
+
+.badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.badge i {
+    width: 40px;
+    height: 40px;
+    background-color: #e1f0fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3498db;
+    font-size: 1rem;
+}
+
+.badge span {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* Features Section */
+.features {
+    padding: 60px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background-color: #e1f0fa;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: #3498db;
+    font-size: 1.8rem;
+}
+
+.feature-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.feature-card p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+}
+
+/* Testimonials Section */
+.testimonials {
+    padding: 60px 5%;
+    background-color: #f1f5f9;
+}
+
+.testimonial-slider {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.testimonial {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.testimonial-content {
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #34495e;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.testimonial-author img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.testimonial-author h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    color: #2c3e50;
+}
+
+.testimonial-author p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+/* Footer */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding-top: 60px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5% 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-logo i {
+    color: #3498db;
+}
+
+.footer-logo p {
+    color: #bdc3c7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.link-group h3 {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.link-group ul li {
+    margin-bottom: 10px;
+}
+
+.link-group a {
+    color: #bdc3c7;
+    transition: color 0.3s ease;
+}
+
+.link-group a:hover {
+    color: #3498db;
+}
+
+.footer-newsletter h3 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+/* Add these styles to your existing CSS file */
+
+/* ML Insights Card Styles */
+.insights-card {
+    background-color: #f8f9ff;
+    border-left: 4px solid #4e73df;
+}
+
+.insight-item {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.insight-item i {
+    color: #ffc107;
+    margin-right: 8px;
+}
+
+.transaction-demo {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e6e9f0;
+}
+
+.transaction-demo h4 {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.demo-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.demo-form input {
+    padding: 8px 12px;
+    border: 1px solid #d1d9e6;
+    border-radius: 4px;
+    flex-grow: 1;
+    min-width: 120px;
+}
+
+#categorization-result {
+    background-color: #eef2ff;
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 15px;
+}
+
+#predicted-category {
+    font-weight: 600;
+    color: #4e73df;
+}
+
+.tip {
+    margin-top: 8px;
+    font-style: italic;
+    color: #666;
+    font-size: 14px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Add these styles to your existing CSS file */
+
+/* Transaction Form Styles */
+.transaction-form, .budget-form, .savings-form, .goal-contribution {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9ff;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+.transaction-form h4, .budget-form h4, .savings-form h4, .goal-contribution h4 {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #34495e;
+}
+
+.transaction-form input, .transaction-form select,
+.budget-form input, .budget-form select,
+.savings-form input, .savings-form select,
+.goal-contribution input, .goal-contribution select {
+    width: 100%;
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    border: 1px solid #d1d9e6;
+    border-radius: 4px;
+}
+
+/* Recent Transactions List */
+.recent-transactions {
+    margin-top: 15px;
+}
+
+.recent-transactions h4 {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #34495e;
+    border-bottom: 1px solid #e6e9f0;
+    padding-bottom: 5px;
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.transaction-item i {
+    margin-right: 10px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #f8f9ff;
+}
+
+.transaction-details {
+    flex: 1;
+}
+
+.transaction-details p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.transaction-details span {
+    font-size: 12px;
+    color: #7f8c8d;
+}
+
+/* Empty state message */
+.empty-state {
+    text-align: center;
+    padding: 15px;
+    color: #7f8c8d;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* Badge locked state */
+.badge.locked {
+    opacity: 0.5;
+}
+
+.badge.locked i {
+    background-color: #ecf0f1;
+    color: #95a5a6;
+}
+
+/* Add these styles to the end of your main.css file */
+
+/* Notification Styles */
+.notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 15px 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+}
+
+.notification-content i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.notification.success {
+    border-left: 4px solid #27ae60;
+}
+
+.notification.success i {
+    color: #27ae60;
+}
+
+.notification.info {
+    border-left: 4px solid #3498db;
+}
+
+.notification.info i {
+    color: #3498db;
+}
+
+.notification.warning {
+    border-left: 4px solid #f39c12;
+}
+
+.notification.warning i {
+    color: #f39c12;
+}
+
+.notification.error {
+    border-left: 4px solid #e74c3c;
+}
+
+.notification.error i {
+    color: #e74c3c;
+}

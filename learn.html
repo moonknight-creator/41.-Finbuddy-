@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning - FinBuddy</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1><i class="fas fa-wallet"></i> FinBuddy</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="savings.html">Savings</a></li>
+                <li><a href="learn.html" class="active">Learn</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+            </ul>
+            <div class="user-profile" id="user-profile">
+                <img src="https://via.placeholder.com/40" alt="User Profile" id="profile-image">
+                <span id="user-greeting">Welcome</span>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Financial Learning</h1>
+                <p>Improve your financial literacy with our educational resources and courses</p>
+            </div>
+        </section>
+
+        <section class="learning-overview">
+            <div class="container">
+                <h2 class="section-title">Your Learning Journey</h2>
+                <div class="learning-summary">
+                    <div class="learning-card">
+                        <div class="learning-header">
+                            <h3>Current Progress</h3>
+                            <div class="badges-display">
+                                <div class="badge">
+                                    <i class="fas fa-award"></i>
+                                    <span>Saver</span>
+                                </div>
+                                <div class="badge">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Investor</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-progress">
+                            <h4>Budgeting Basics</h4>
+                            <div class="progress-info">
+                                <div class="progress-bar">
+                                    <div class="progress" style="width: 80%;"></div>
+                                </div>
+                                <span>80% Complete</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="courses-section">
+            <div class="container">
+                <h2 class="section-title">Available Courses</h2>
+                <div class="courses-grid">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-piggy-bank"></i>
+                        </div>
+                        <h3>Budgeting Basics</h3>
+                        <p>Learn how to create and maintain a budget that works for your lifestyle</p>
+                        <div class="course-status in-progress">
+                            <span>In Progress</span>
+                        </div>
+                        <button class="btn-secondary">Continue</button>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3>Investing 101</h3>
+                        <p>Understand the fundamentals of investing and building wealth</p>
+                        <div class="course-status">
+                            <span>Not Started</span>
+                        </div>
+                        <button class="btn-secondary">Start Course</button>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3>Home Buying Guide</h3>
+                        <p>Everything you need to know about purchasing your first home</p>
+                        <div class="course-status">
+                            <span>Not Started</span>
+                        </div>
+                        <button class="btn-secondary">Start Course</button>
+                    </div>
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3>Debt Management</h3>
+                        <p>Strategies for managing and eliminating debt effectively</p>
+                        <div class="course-status">
+                            <span>Not Started</span>
+                        </div>
+                        <button class="btn-secondary">Start Course</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="learning-resources">
+            <div class="container">
+                <h2 class="section-title">Additional Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3>Financial Articles</h3>
+                        <p>Read our collection of articles on various financial topics</p>
+                        <button class="btn-secondary">Browse Articles</button>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <h3>Financial Calculators</h3>
+                        <p>Tools to help you plan and calculate financial decisions</p>
+                        <button class="btn-secondary">Use Calculators</button>
+                    </div>
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3>Video Tutorials</h3>
+                        <p>Watch expert explanations of key financial concepts</p>
+                        <button class="btn-secondary">Watch Videos</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <div class="link-group">
+                    <h3>FinBuddy</h3>
+                    <ul>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                        <li><a href="savings.html">Savings</a></li>
+                        <li><a href="learn.html">Learn</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for tips and updates</p>
+                <form>
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 FinBuddy. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/learn.js"></script>
+</body>
+</html>

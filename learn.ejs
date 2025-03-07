@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Education - FinBuddy</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/learn.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <%- include('./partials/header') %>
+    
+    <main class="learn-container">
+        <section class="learn-hero">
+            <div class="learn-hero-content">
+                <h1>Financial Education</h1>
+                <p>Expand your financial knowledge through our interactive courses</p>
+            </div>
+        </section>
+        
+        <section class="learning-progress">
+            <h2>Your Learning Journey</h2>
+            <div class="progress-container">
+                <% if (locals.isAuthenticated && locals.courses && locals.courses.length > 0) { %>
+                    <div class="overall-progress">
+                        <div class="progress-stat">
+                            <span class="stat-label">Courses Started</span>
+                            <span class="stat-value"><%= locals.courses.filter(c => c.progress > 0).length %></span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="stat-label">Courses Completed</span>
+                            <span class="stat-value"><%= locals.courses.filter(c => c.completed).length %></span>
+                        </div>
+                        <div class="progress-stat">
+                            <span class="stat-label">Total Progress</span>
+                            <span class="stat-value">
+                                <%= Math.round(locals.courses.reduce((sum, c) => sum + c.progress, 0) / locals.courses.length) %>%
+                            </span>
+                        </div>
+                    </div>
+                <% } else { %>
+                    <div class="login-prompt">
+                        <p>Sign in to track your learning progress</p>
+                        <a href="/login?redirect=/learn" class="primary-button">Sign In</a>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+        
+        <section class="achievements-section">
+            <h2>Your Achievements</h2>
+            <div class="badges-container">
+                <% if (locals.isAuthenticated && locals.earnedBadges && locals.earnedBadges.length > 0) { %>
+                    <% locals.earnedBadges.forEach(function(badge) { %>
+                        <div class="badge-card earned">
+                            <div class="badge-icon">
+                                <i class="fas <%= badge.icon %>"></i>
+                            </div>
+                            <div class="badge-info">
+                                <h3><%= badge.name %></h3>
+                                <p><%= badge.description %></p>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else if (locals.isAuthenticated) { %>
+                    <div class="empty-badges">
+                        <i class="fas fa-award empty-icon"></i>
+                        <p>Complete courses to earn achievements</p>
+                    </div>
+                <% } else { %>
+                    <div class="login-prompt">
+                        <p>Sign in to view and earn badges</p>
+                        <a href="/login?redirect=/learn" class="primary-button">Sign In</a>
+                    </div>
+                <% } %>
+                
+                <% if (locals.isAuthenticated && locals.badges && locals.badges.length > 0) { %>
+                    <h3 class="available-badges-title">Available Badges</h3>
+                    <div class="available-badges">
+                        <% locals.badges.forEach(function(badge) { 
+                            // Check if this badge is not already earned
+                            const isEarned = locals.earnedBadges ? 
+                                locals.earnedBadges.some(earned => earned.id === badge.id) : false;
+                            if (!isEarned) { %>
+                                <div class="badge-card locked">
+                                    <div class="badge-icon">
+                                        <i class="fas <%= badge.icon %>"></i>
+                                    </div>
+                                    <div class="badge-info">
+                                        <h3><%= badge.name %></h3>
+                                        <p><%= badge.description %></p>
+                                    </div>
+                                </div>
+                            <% } 
+                        }); %>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+        
+        <section class="courses-section">
+            <h2>Financial Courses</h2>
+            <div class="courses-grid">
+                <% if (locals.courses && locals.courses.length > 0) { %>
+                    <% locals.courses.forEach(function(course) { %>
+                        <div class="course-card">
+                            <div class="course-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="course-info">
+                                <h3><%= course.title %></h3>
+                                <p><%= course.description %></p>
+                                <div class="course-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: <%= course.progress %>%"></div>
+                                    </div>
+                                    <span class="progress-text"><%= course.progress %>% Complete</span>
+                                </div>
+                                <a href="/learn/course/<%= course.id %>" class="course-button">
+                                    <% if (course.progress === 0) { %>
+                                        Start Course
+                                    <% } else if (course.completed) { %>
+                                        Review Course
+                                    <% } else { %>
+                                        Continue Course
+                                    <% } %>
+                                </a>
+                            </div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <div class="no-courses">
+                        <p>No courses available at the moment.</p>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+        
+        <section class="financial-tips">
+            <h2>Financial Tips</h2>
+            <div class="tips-container">
+                <div class="tip-card">
+                    <i class="fas fa-piggy-bank"></i>
+                    <h3>Build an Emergency Fund</h3>
+                    <p>Aim to save 3-6 months of expenses for unexpected costs.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Start Investing Early</h3>
+                    <p>Even small investments grow significantly over time.</p>
+                </div>
+                <div class="tip-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Follow the 50/30/20 Rule</h3>
+                    <p>Allocate 50% to needs, 30% to wants, and 20% to savings.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <%- include('./partials/footer') %>
+    
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/learn.js"></script>
+</body>
+</html>

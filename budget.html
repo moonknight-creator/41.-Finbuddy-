@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget - FinBuddy</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/modal.css">
+    <link rel="stylesheet" href="styles/charts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles/budget.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1><i class="fas fa-wallet"></i> FinBuddy</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="budget.html" class="active">Budget</a></li>
+                <li><a href="savings.html">Savings</a></li>
+                <li><a href="learn.html">Learn</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+            </ul>
+            <div class="user-profile" id="user-profile">
+                <img src="https://via.placeholder.com/40" alt="User Profile" id="profile-image">
+                <span id="user-greeting">Welcome</span>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <h1>Budget Management</h1>
+                <p>Create, track, and optimize your budget to reach your financial goals</p>
+            </div>
+        </section>
+
+        <section class="budget-overview">
+            <div class="container">
+                <h2 class="section-title">Monthly Budget Overview</h2>
+                <div class="budget-summary">
+                    <div class="budget-card">
+                        <div class="budget-header">
+                            <h3>Total Budget</h3>
+                            <span class="budget-amount" id="total-budget">₹0</span>
+                        </div>
+                        <div class="budget-stats">
+                            <div class="stat">
+                                <p>Spent</p>
+                                <span class="negative" id="budget-spent">₹0</span>
+                            </div>
+                            <div class="stat">
+                                <p>Remaining</p>
+                                <span class="positive" id="budget-remaining">₹0</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar overall-progress">
+                            <div class="progress" id="budget-progress" style="width: 0%;"></div>
+                        </div>
+                        
+                        <div class="budget-period-form">
+                            <div class="form-group">
+                                <label for="budget-start">Budget Period</label>
+                                <div class="date-inputs">
+                                    <input type="date" id="budget-start" placeholder="Start Date">
+                                    <span class="date-separator">to</span>
+                                    <input type="date" id="budget-end" placeholder="End Date">
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="total-income">Monthly Income</label>
+                                <input type="number" id="total-income" placeholder="Enter your monthly income">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="savings-goal">Savings Goal (%)</label>
+                                <div class="savings-slider-container">
+                                    <input type="range" id="savings-percentage" min="0" max="50" value="20" step="1">
+                                    <span id="savings-value">20%</span>
+                                </div>
+                                <p class="savings-amount">₹<span id="savings-amount">0</span> per month</p>
+                            </div>
+                            
+                            <button id="update-budget-btn" class="btn-primary">Save Budget Settings</button>
+                        </div>
+                        
+                        <div class="ai-recommendation">
+                            <h4>AI Recommendation</h4>
+                            <p id="ai-budget-recommendation">No recommendations available yet. Add some budget categories to get started.</p>
+                            <button class="btn-secondary" id="refresh-recommendation">Refresh</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="visualizations">
+            <div class="container">
+                <h2 class="section-title">Budget Insights</h2>
+                <div class="charts-container">
+                    <div class="chart-row">
+                        <div class="chart-card">
+                            <h3><i class="fas fa-chart-bar"></i> Expense Breakdown</h3>
+                            <div class="chart-container">
+                                <canvas id="expenses-chart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <h3><i class="fas fa-chart-pie"></i> Spending Distribution</h3>
+                            <div class="chart-container">
+                                <canvas id="distribution-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-card full-width">
+                            <h3><i class="fas fa-robot"></i> AI-Predicted Expenses</h3>
+                            <div class="prediction-container">
+                                <div class="prediction-message" id="prediction-message">
+                                    <p>Click the button below to generate expense predictions based on your spending patterns.</p>
+                                </div>
+                                <div class="chart-container" id="prediction-chart-container">
+                                    <canvas id="prediction-chart"></canvas>
+                                </div>
+                                <button class="btn-primary" id="generate-prediction-btn">Generate Predictions</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="budget-categories">n">
+            <div class="container">
+                <div class="section-header">vings Goal Progress</h2>
+                    <h2 class="section-title">Budget Categories</h2>
+                    <button class="btn-primary" id="add-category-btn"><i class="fas fa-plus"></i> Add Category</button>
+                </div>  <div class="chart-card">
+                            <h3><i class="fas fa-piggy-bank"></i> Savings Goal Visualization</h3>
+                <div class="categories-grid" id="categories-grid">
+                    <!-- Categories will be added dynamically by JavaScript -->
+                    <div class="category-empty-state" id="categories-empty-state">
+                        <div class="empty-illustration">"savings-goal-status">
+                            <i class="fas fa-folder-open"></i>ur progress
+                        </div>div>
+                        <h3>No Budget Categories Yet</h3>
+                        <p>Create your first budget category to start tracking your expenses.</p>
+                        <button class="btn-primary" id="create-first-category-btn">Create First Category</button>
+                    </div>  <div class="savings-details">
+                </div>          <div class="detail-row">
+            </div>                  <span class="detail-label">Current Savings:</span>
+        </section>                  <span class="detail-value" id="current-savings-amount">₹0</span>
+                                </div>
+        <section class="budget-tools">lass="detail-row">
+            <div class="container"> <span class="detail-label">Goal Amount:</span>
+                <h2 class="section-title">Budget Tools</h2>ue" id="savings-goal-amount">₹0</span>
+                <div class="tools-grid">
+                    <div class="tool-card">"detail-row">
+                        <div class="tool-icon">="detail-label">Goal Item:</span>
+                            <i class="fas fa-chart-line"></i>" id="savings-goal-item">Not Set</span>
+                        </div>  </div>
+                        <h3>Spending Analysis</h3>-row">
+                        <p>Analyze your spending patterns and identify areas for improvement</p>
+                        <button class="btn-secondary">Analyze Now</button>-goal-date">N/A</span>
+                    </div>      </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">ml" class="btn-secondary">Manage Savings Goals</a>
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3>Bill Calendar</h3>
+                        <p>Track upcoming bills and never miss a payment</p>
+                        <button class="btn-secondary">View Calendar</button>
+                    </div>
+                    <div class="tool-card">
+                        <div class="tool-icon">
+                            <i class="fas fa-file-export"></i>
+                        </div>"section-title">Budget Categories</h2>
+                        <h3>Export Budget</h3>" id="add-category-btn"><i class="fas fa-plus"></i> Add Category</button>
+                        <p>Download your budget data in various formats</p>
+                        <button class="btn-secondary">Export</button>
+                    </div>="categories-grid" id="categories-grid">
+                </div>-- Categories will be added dynamically by JavaScript -->
+            </div>  <div class="category-empty-state" id="categories-empty-state">
+        </section>      <div class="empty-illustration">
+    </main>                 <i class="fas fa-folder-open"></i>
+                        </div>
+    <footer>            <h3>No Budget Categories Yet</h3>
+        <div class="footer-content">ur first budget category to start tracking your expenses.</p>
+            <div class="footer-logo">="btn-primary" id="create-first-category-btn">Create First Category</button>
+                <h2><i class="fas fa-wallet"></i> FinBuddy</h2>
+                <p>Your companion on the journey to financial wellness</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h3>Product</h3>">
+                    <ul>container">
+                        <li><a href="#">Features</a></li>2>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>div class="tool-icon">
+                </div>      <i class="fas fa-chart-line"></i>
+                <div class="link-group">
+                    <h3>Company</h3> Analysis</h3>
+                    <ul><p>Analyze your spending patterns and identify areas for improvement</p>
+                        <li><a href="#">About Us</a></li>lyze Now</button>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>div class="tool-icon">
+                </div>      <i class="fas fa-calendar-alt"></i>
+                <div class="link-group">
+                    <h3>Resources</h3>dar</h3>
+                    <ul><p>Track upcoming bills and never miss a payment</p>
+                        <li><a href="#">Blog</a></li>>View Calendar</button>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>div class="tool-icon">
+                </div>      <i class="fas fa-file-export"></i>
+            </div>      </div>
+            <div class="footer-newsletter">h3>
+                <h3>Stay Updated</h3>our budget data in various formats</p>
+                <p>Subscribe to our newsletter for tips and updates</p>
+                <form>div>
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 FinBuddy. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>wellness</p>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>iv class="link-group">
+        </div>      <h3>Product</h3>
+    </footer>       <ul>
+                        <li><a href="#">Features</a></li>
+    <div id="category-dialog" class="modal">ing</a></li>
+        <div class="modal-content">="#">FAQ</a></li>
+            <div class="modal-header">
+                <h2>Add New Category</h2>
+                <span class="close-button">&times;</span>
+            </div>  <h3>Company</h3>
+            <div class="modal-body">
+                <form id="category-form">bout Us</a></li>
+                    <div class="form-group">ers</a></li>
+                        <label for="category-name">Category Name</label>
+                        <input type="text" id="category-name" placeholder="E.g., Groceries, Entertainment" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category-limit">Budget Limit</label>
+                        <input type="number" id="category-limit" placeholder="Enter amount" required>
+                    </div>i><a href="#">Blog</a></li>
+                    <div class="form-group">unity</a></li>
+                        <label for="category-icon">Category Icon</label>
+                        <div class="icon-selector">
+                            <div class="icon-option selected" data-icon="fa-shopping-basket">
+                                <i class="fas fa-shopping-basket"></i>
+                            </div>sletter">
+                            <div class="icon-option" data-icon="fa-home">
+                                <i class="fas fa-home"></i> updates</p>
+                            </div>
+                            <div class="icon-option" data-icon="fa-car">>
+                                <i class="fas fa-car"></i>ry">Subscribe</button>
+                            </div>
+                            <div class="icon-option" data-icon="fa-utensils">
+                                <i class="fas fa-utensils"></i>
+                            </div>>
+                            <div class="icon-option" data-icon="fa-film">
+                                <i class="fas fa-film"></i>
+                            </div>ss="fab fa-facebook"></i></a>
+                            <div class="icon-option" data-icon="fa-tshirt">
+                                <i class="fas fa-tshirt"></i>/a>
+                            </div>ss="fab fa-linkedin"></i></a>
+                            <div class="icon-option" data-icon="fa-plane">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-medkit">
+                                <i class="fas fa-medkit"></i>
+                            </div>>
+                            <input type="hidden" id="category-icon" value="fa-shopping-basket">
+                        </div>tegory</h2>
+                    </div>s="close-button">&times;</span>
+                    <button type="submit" class="btn-primary">Add Category</button>
+                </form>"modal-body">
+            </div>orm id="category-form">
+        </div>      <div class="form-group">
+    </div>              <label for="category-name">Category Name</label>
+                        <input type="text" id="category-name" placeholder="E.g., Groceries, Entertainment" required>
+    <script src="js/init-data.js"></script>
+    <script src="js/main.js"></script>roup">
+    <script src="js/linear-regression.js"></script>>Budget Limit</label>
+    <script src="js/ai-budget-system.js"></script>ategory-limit" placeholder="Enter amount" required>
+    <script src="js/budget.js"></script>
+    <script src="js/budget-charts.js"></script>
+    <script src="js/budget-insights.js"></script>                 <label for="category-icon">Category Icon</label>
+    <script src="js/budget-page.js"></script>                 <div class="icon-selector">
+
+
+
+</html></body>    <script src="js/notifications.js"></script>                            <div class="icon-option selected" data-icon="fa-shopping-basket">
+                                <i class="fas fa-shopping-basket"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-home">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-car">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-utensils">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-film">
+                                <i class="fas fa-film"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-tshirt">
+                                <i class="fas fa-tshirt"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-plane">
+                                <i class="fas fa-plane"></i>
+                            </div>
+                            <div class="icon-option" data-icon="fa-medkit">
+                                <i class="fas fa-medkit"></i>
+                            </div>
+                            <input type="hidden" id="category-icon" value="fa-shopping-basket">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn-primary">Add Category</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/init-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/linear-regression.js"></script>
+    <script src="js/ai-budget-system.js"></script>
+    <script src="js/budget.js"></script>
+    <script src="js/budget-charts.js"></script>
+</body>
+</html>

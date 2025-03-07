@@ -1,0 +1,177 @@
+/* Dashboard Styles */
+
+/* Financial Management Photo Container */
+#financial-photo-container {
+  width: 100%;
+  margin: 20px 0;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding-bottom: 10px;
+}
+
+.financial-management-photo {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.financial-management-photo:hover {
+  transform: scale(1.02);
+}
+
+.financial-photo-caption {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Dashboard Layout */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 20px;
+}
+
+@media (min-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .dashboard-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  #financial-photo-container {
+    grid-column: span 3;
+  }
+}
+
+/* Dashboard Widgets */
+.dashboard-widget {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.widget-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Balance Summary */
+.balance-summary {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.balance-item {
+  text-align: center;
+}
+
+.balance-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.balance-value {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.balance-value.positive {
+  color: #28a745;
+}
+
+.balance-value.negative {
+  color: #dc3545;
+}
+
+/* Transactions List */
+.transactions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.transaction-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-name {
+  font-weight: 500;
+}
+
+.transaction-category {
+  font-size: 12px;
+  color: #666;
+}
+
+.transaction-date {
+  font-size: 12px;
+  color: #999;
+}
+
+.transaction-amount {
+  font-weight: 600;
+}
+
+.transaction-amount.income {
+  color: #28a745;
+}
+
+.transaction-amount.expense {
+  color: #dc3545;
+}
+
+/* Chart Container */
+#spending-chart {
+  height: 250px;
+  margin-top: 15px;
+}
+
+/* Action buttons */
+.action-button {
+  padding: 8px 16px;
+  background-color: #4A6FDC;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.action-button:hover {
+  background-color: #3A5FCC;
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= course.title %> - FinBuddy Learning</title>
+    <link rel="stylesheet" href="/public/css/styles.css">
+    <link rel="stylesheet" href="/public/css/learn.css">
+    <link rel="stylesheet" href="/public/css/course.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <%- include('./partials/header') %>
+    
+    <main class="course-container" id="course-container" data-course-id="<%= course.id %>">
+        <div class="course-header">
+            <div class="course-detail-progress"></div>
+            <div class="course-header-content">
+                <h1><%= course.title %></h1>
+                <div class="course-meta">
+                    <span class="course-modules"><i class="fas fa-book"></i> <%= course.total_modules %> Modules</span>
+                    <div id="course-progress" class="course-progress-indicator" 
+                         data-progress="<%= progress.progress %>" 
+                         data-total-modules="<%= course.total_modules %>">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: <%= progress.progress %>%"></div>
+                        </div>
+                        <span class="progress-text"><%= progress.progress %>% Complete</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="course-content">
+            <div class="course-sidebar">
+                <h3>Course Modules</h3>
+                <ul class="module-list">
+                    <li class="active">Introduction to <%= course.title %></li>
+                    <li>Core Concepts</li>
+                    <li>Practical Application</li>
+                    <li>Advanced Strategies</li>
+                    <li>Review & Assessment</li>
+                </ul>
+                
+                <div class="course-resources">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-file-pdf"></i> Course PDF</a></li>
+                        <li><a href="#"><i class="fas fa-calculator"></i> Financial Calculator</a></li>
+                        <li><a href="#"><i class="fas fa-external-link-alt"></i> Additional Reading</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="course-lesson">
+                <h2>Introduction to <%= course.title %></h2>
+                
+                <p class="course-intro">
+                    <%= course.description %>
+                </p>
+                
+                <div class="lesson-section">
+                    <h3>What You'll Learn</h3>
+                    <ul class="learning-objectives">
+                        <li>Understand the fundamentals of <%= course.title.toLowerCase() %></li>
+                        <li>Develop practical skills for managing your finances</li>
+                        <li>Apply key concepts to your own financial situation</li>
+                        <li>Create a personalized plan for financial growth</li>
+                    </ul>
+                </div>
+                
+                <div class="lesson-section">
+                    <h3>Key Concepts</h3>
+                    <p>
+                        Financial literacy is the foundation of sound money management. By understanding
+                        the core principles of <%= course.title.toLowerCase() %>, you'll be equipped to make
+                        better financial decisions.
+                    </p>
+                    
+                    <div class="concept-cards">
+                        <div class="concept-card">
+                            <h4>Planning</h4>
+                            <p>Creating a roadmap for your financial future</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Implementation</h4>
+                            <p>Putting strategies into action</p>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Monitoring</h4>
+                            <p>Tracking progress and making adjustments</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lesson-section">
+                    <h3>Real-World Application</h3>
+                    <p>
+                        Let's explore how these concepts apply to everyday financial situations:
+                    </p>
+                    
+                    <div class="example-scenario">
+                        <h4>Scenario: Monthly Budget Planning</h4>
+                        <p>
+                            Sarah earns $4,000 per month and wants to create a budget that allows her to save
+                            for a vacation while paying down her student loans. Using the 50/30/20 rule, she allocates:
+                        </p>
+                        <ul>
+                            <li><strong>50% ($2,000)</strong> to necessities (rent, utilities, groceries)</li>
+                            <li><strong>30% ($1,200)</strong> to wants (entertainment, dining out)</li>
+                            <li><strong>20% ($800)</strong> to savings and debt repayment</li>
+                        </ul>
+                        <p>
+                            By following this approach, Sarah can systematically save for her vacation while reducing her debt.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="lesson-section">
+                    <h3>Interactive Exercise</h3>
+                    <p>
+                        Take some time to apply these concepts to your own situation:
+                    </p>
+                    
+                    <div class="interactive-exercise">
+                        <ol>
+                            <li>List your monthly income sources</li>
+                            <li>Categorize your expenses into needs and wants</li>
+                            <li>Calculate what percentage you're currently saving</li>
+                            <li>Identify one area where you could optimize your finances</li>
+                        </ol>
+                        
+                        <div class="exercise-tip">
+                            <i class="fas fa-lightbulb"></i>
+                            <p><strong>Tip:</strong> Start small with changes. Even minor adjustments can lead to significant improvements over time.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lesson-navigation">
+                    <button class="nav-button disabled">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="nav-button">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <%- include('./partials/footer') %>
+    
+    <script src="/public/js/auth.js"></script>
+    <script src="/public/js/learn.js"></script>
+</body>
+</html>

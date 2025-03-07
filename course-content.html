@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Content - FinBuddy</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .course-content {
+            padding: 2rem 0;
+        }
+        
+        .course-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .course-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        
+        .course-icon i {
+            font-size: 24px;
+            color: white;
+        }
+        
+        .course-info h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+        
+        .course-info p {
+            margin: 0.5rem 0 0;
+            color: var(--text-secondary);
+        }
+        
+        .progress-container {
+            margin-bottom: 2rem;
+        }
+        
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--primary-color);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 0.5s ease-in-out;
+        }
+        
+        .modules-container {
+            margin-bottom: 3rem;
+        }
+        
+        .module-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .module-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .module-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .module-title {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+        
+        .module-status {
+            font-size: 0.9rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            background-color: #f0f0f0;
+        }
+        
+        .module-status.completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .module-status.in-progress {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .module-content {
+            margin-top: 1rem;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+        }
+        
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .module-description {
+            margin-bottom: 1rem;
+        }
+        
+        .module-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .quiz-container {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .quiz-question {
+            margin-bottom: 1rem;
+        }
+        
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .quiz-option:hover {
+            background-color: #e9ecef;
+        }
+        
+        .quiz-option input {
+            margin-right: 0.5rem;
+        }
+        
+        .course-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1><i class="fas fa-wallet"></i> FinBuddy</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="budget.html">Budget</a></li>
+                <li><a href="savings.html">Savings</a></li>
+                <li><a href="learn.html" class="active">Learn</a></li>
+                <li><a href="alerts.html">Alerts</a></li>
+            </ul>
+            <div class="user-profile" id="user-profile">
+                <img src="https://via.placeholder.com/40" alt="User Profile" id="profile-image">
+                <span id="user-greeting">Welcome</span>
+            </div>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header">
+            <div class="container">
+                <a href="learn.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Courses</a>
+            </div>
+        </section>
+
+        <section class="course-content">
+            <div class="container">
+                <div class="course-header">
+                    <div class="course-icon">
+                        <i class="fas fa-piggy-bank" id="course-icon"></i>
+                    </div>
+                    <div class="course-info">
+                        <h1 id="course-title">Budgeting Basics</h1>
+                        <p id="course-description">Learn how to create and maintain a budget that works for your lifestyle</p>
+                    </div>
+                </div>
+
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span>Course Progress</span>
+                        <span id="progress-percentage">0% Complete</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" id="course-progress" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <div class="modules-container" id="modules-container">
+                    <!-- Module cards will be dynamically inserted here -->
+                </div>
+
+                <div class="course-navigation">
+                    <button class="btn-secondary" id="prev-module" disabled>Previous Module</button>
+                    <button class="btn-primary" id="next-module">Next Module</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <div class="link-group">
+                    <h3>FinBuddy</h3>
+                    <ul>
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="budget.html">Budget</a></li>
+                        <li><a href="savings.html">Savings</a></li>
+                        <li><a href="learn.html">Learn</a></li>
+                    </ul>
+                </div>
+                <div class="link-group">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to our newsletter for tips and updates</p>
+                <form>
+                    <input type="email" placeholder="Your email address">
+                    <button type="submit" class="btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 FinBuddy. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/course-content.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+/* Course Detail Page Styles */
+
+.course-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Course Header */
+.course-header {
+  position: relative;
+  background-color: #4a6fdc;
+  color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.course-detail-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background-color: #28a745;
+  width: 0;
+  transition: width 0.3s;
+}
+
+.course-header-content {
+  padding: 30px 25px;
+}
+
+.course-header h1 {
+  margin: 0 0 15px;
+  font-size: 2.2rem;
+}
+
+.course-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.course-modules {
+  font-size: 1rem;
+  opacity: 0.9;
+  display: flex;
+  align-items: center;
+}
+
+.course-modules i {
+  margin-right: 8px;
+}
+
+.course-progress-indicator {
+  min-width: 200px;
+  max-width: 300px;
+}
+
+/* Course Content Layout */
+.course-content {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+}
+
+@media (max-width: 768px) {
+  .course-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Course Sidebar */
+.course-sidebar {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+
+.course-sidebar h3 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.module-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+}
+
+.module-list li {
+  padding: 12px 15px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.module-list li:hover {
+  background-color: #f8f9fa;
+}
+
+.module-list li.active {
+  background-color: #e8f0fe;
+  color: #4a6fdc;
+  font-weight: 500;
+  border-left: 3px solid #4a6fdc;
+}
+
+.course-resources ul {
+  list-style: none;
+  padding: 0;
+}
+
+.course-resources li {
+  margin-bottom: 10px;
+}
+
+.course-resources a {
+  display: flex;
+  align-items: center;
+  color: #4a6fdc;
+  text-decoration: none;
+}
+
+.course-resources a:hover {
+  text-decoration: underline;
+}
+
+.course-resources i {
+  margin-right: 8px;
+}
+
+/* Course Lesson Content */
+.course-lesson {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.course-lesson h2 {
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.course-intro {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.lesson-section {
+  margin-bottom: 40px;
+}
+
+.lesson-section h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.lesson-section p {
+  line-height: 1.6;
+  color: #555;
+}
+
+.learning-objectives {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.learning-objectives li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+/* Concept Cards */
+.concept-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.concept-card {
+  background-color: #f8f9fa;
+  border-left: 3px solid #4a6fdc;
+  padding: 15px;
+  border-radius: 5px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.concept-card h4 {
+  margin: 0 0 8px;
+  color: #4a6fdc;
+}
+
+.concept-card p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Example Scenarios */
+.example-scenario {
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 15px 0;
+}
+
+.example-scenario h4 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.example-scenario ul {
+  margin: 15px 0;
+}
+
+.example-scenario li {
+  margin-bottom: 8px;
+}
+
+/* Interactive Exercises */
+.interactive-exercise {
+  background-color: #e8f0fe;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 15px 0;
+}
+
+.interactive-exercise ol {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.interactive-exercise li {
+  margin-bottom: 10px;
+}
+
+.exercise-tip {
+  display: flex;
+  align-items: flex-start;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.exercise-tip i {
+  color: #ffc107;
+  font-size: 1.2rem;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+
+.exercise-tip p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Navigation Buttons */
+.lesson-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.nav-button {
+  display: flex;
+  align-items: center;
+  padding: 10px 18px;
+  background-color: #4a6fdc;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+  background-color: #3a5fcc;
+}
+
+.nav-button.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.nav-button i {
+  margin: 0 5px;
+}
+
+/* Completion Badge */
+.completion-badge {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(to right, #28a745, #34c759);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 30px 0;
+  box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+.completion-badge.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.completion-badge .badge-icon {
+  font-size: 2.5rem;
+  margin-right: 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.completion-badge .badge-message h3 {
+  margin: 0 0 5px;
+  font-size: 1.3rem;
+}
+
+.completion-badge .badge-message p {
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .course-header-content {
+    padding: 20px 15px;
+  }
+  
+  .course-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .course-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .course-progress-indicator {
+    margin-top: 10px;
+    width: 100%;
+    max-width: none;
+  }
+  
+  .concept-cards {
+    flex-direction: column;
+  }
+  
+  .concept-card {
+    min-width: 100%;
+  }
+}
